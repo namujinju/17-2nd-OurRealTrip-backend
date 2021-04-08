@@ -1,0 +1,31 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    docker: 
+      - image: circleci/python:3.8
+      - image: circleci/mysql:5.7.28
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: test_db
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+    executor: python/default
+    steps:
+      - checkout
+      - python/load-cache
+      - run:
+          command: pip install -r requirements.txt
+          name: Install Dependencies
+      - run:
+          command: pytest .
+          name: Test
+          
+workflows:
+  main:
+    jobs:
+      - build-and-test
