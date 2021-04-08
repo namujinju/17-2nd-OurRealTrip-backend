@@ -26,6 +26,7 @@ jobs:
             echo 'export PASSWORD="password"' >> $BASH_ENV
             echo 'export DB_HOST="localhost"' >> $BASH_ENV
             echo 'export DB_PORT=3306' >> $BASH_ENV
+            echo 'export SECRET_KEY="'@qzk8s@mxatbfqw4_wf2zq_0q*-%k^y+@*rhnmmg%$==&tkx(='"' >> $BASH_ENV
             source $BASH_ENV
           name: Add database Connection Environment Variables
       - run:
