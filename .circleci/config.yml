@@ -10,10 +10,10 @@ jobs:
       - image: circleci/mysql:5.7.28
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
         environment:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: test_db
-          MYSQL_USER: user
-          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: "password"
+          MYSQL_DATABASE: "test_db"
+          MYSQL_USER: "user"
+          MYSQL_PASSWORD: "password"
 
     executor: python/default
     steps:
