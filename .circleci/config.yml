@@ -33,7 +33,7 @@ jobs:
           command: pip install -r requirements.txt
           name: Install Dependencies
       - run:
-          command: python manage.py test .
+          command: python manage.py test
           name: Test
           
 workflows:
